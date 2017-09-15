@@ -82,7 +82,7 @@ resource "ibm_compute_vm_instance" "vm" {
   # user_metadata            = "${file("install.yml")}"
 
   provisioner "local-exec" {
-    command = "curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh"
+    command = "apk add docker && service docker start && docker images"
   }
 }
 
