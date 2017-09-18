@@ -86,7 +86,7 @@ resource "ibm_compute_vm_instance" "vm" {
 
 resource "null_resource" "runner" {
   provisioner "local-exec" {
-    command = "su apk add nginx"
+    command = "su root && apk add nginx"
   }
 }
 
