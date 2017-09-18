@@ -82,7 +82,7 @@ resource "ibm_compute_vm_instance" "vm" {
   # user_metadata            = "${file("install.yml")}"
 
   provisioner "local-exec" {
-    command = "curl --help"
+    command = "sudo apk install nginx"
   }
 }
 
