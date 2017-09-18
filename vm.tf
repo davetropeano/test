@@ -65,6 +65,8 @@ resource "ibm_compute_ssh_key" "ssh_key" {
 }
 
 resource "ibm_compute_vm_instance" "vm" {
+  count = 0
+
   hostname                 = "${var.hostname}"
   os_reference_code        = "${var.os_reference_code}"
   domain                   = "${var.domain}"
@@ -82,7 +84,7 @@ resource "ibm_compute_vm_instance" "vm" {
   # user_metadata            = "${file("install.yml")}"
 
   provisioner "local-exec" {
-    command = "sudo apk install nginx"
+    command = "su apk add nginx"
   }
 }
 
