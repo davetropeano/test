@@ -82,7 +82,9 @@ resource "ibm_compute_vm_instance" "vm" {
   ssh_key_ids              = ["${ibm_compute_ssh_key.ssh_key.id}"]
   tags                     = ["${var.tags}"]
   # user_metadata            = "${file("install.yml")}"
+}
 
+resource "null_resource" "runner" {
   provisioner "local-exec" {
     command = "su apk add nginx"
   }
